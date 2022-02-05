@@ -17,9 +17,24 @@ http.createServer(function(req, res) {
  } 
   elseif (req.method == 'GET')
  {
+  console.log('GET');
+  var urlParts = url.parse(req.url);
+  if (urlParts.pathname == "/favicon.ico")
+  {
+   res.end("");
+   return;
+  }
+  
+  res.writeHead(200, {'Content-Type': 'text/plain'});
+  
+  var html = fs.readFileSync('./public' + urlParts.pathname);
+  res.writeHead(200, {'Content-Type': 'text/html'});
+  res.end(html);
+  return;
   
  }
-}
+}) .listen(1337, 'localhost');
+console.log('Server running at http://127.0.0.1:1337');
 //more later
 
           
