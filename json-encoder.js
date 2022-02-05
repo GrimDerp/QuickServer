@@ -11,8 +11,24 @@ http.createServer(function(req, res) {
    });
    req.on('end', function() {
     res.writeHead(200,
-                  {'Content-Type'
-   }
+       {'Content-Type': 'application/json'});
+    res.end("null");
+   });
  } 
+  elseif (req.method == 'GET')
+ {
+  
+ }
 }
 //more later
+
+          
+          
+          /* 
+https://merciful-snickerdoodle.glitch.me
+
+*/
+          
+         
+          
+     
