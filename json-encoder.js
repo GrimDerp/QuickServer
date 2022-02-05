@@ -1,6 +1,7 @@
 var http = require('http');
-car fs = require('fs');
+var fs = require('fs');
 var url = require('url');
+//allocate http, filesystem, & url objects
 
 http.createServer(function(req, res) {
  if (req.method == 'POST') {
@@ -35,7 +36,7 @@ http.createServer(function(req, res) {
  }
 }) .listen(1337, 'localhost');
 console.log('Server running at http://127.0.0.1:1337');
-//more later
+//register http server to listen on port 1337 lul
 
           
           
