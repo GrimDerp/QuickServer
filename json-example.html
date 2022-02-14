@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+  </head>
+  <body onload="doAjax()">
+    
+    
+    <p>Hello world</p>
+    <p>
+    <div id="debug"></div>
+    </p>
+  <p>
+  <div id="json"></div>
+  <p/>
+  <p>
+  <div id="result"></div>
+  <p/>
+  
+  <p>Powered by <a href="http://www.aprs.fi">aprs.fi</a></p>
+  
+  <script type="text/javascript">
+    var debug = document.getElementsById('debug');
+    
+    function doAjax(){
+      document.getElementsById("result").innerHTML =
+        "loaded... executing.";
+    }
+  </script>
+  </body>
+</html>
+//simple htmll doc w/ 3 div tags; more soon 
