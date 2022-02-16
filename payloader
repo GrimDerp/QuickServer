@@ -13,3 +13,38 @@ headers = {'content-type': 'application/json'}
 result = requests.post(yql_url, data=json.dumps(payload), headers=headers)
 data = result.json()
 */
+
+/*
+EDIT: Adding some details specific to the join.me api
+
+Looking at the join.me docs you'll need to obtain an access token to add to your header. But you also need an app auth code before you can get an access token. You can get the app auth code manually, or by chaining some redirects.
+
+To get started, try this url in your browser and get the code from the callback params. Using your join.me creds:
+
+auth_url = 'https://secure.join.me/api/public/v1/auth/oauth2' \
+    + '?client_id=' + client_id \
+    + '&scope=scheduler%20start_meeting' \
+    + '&redirect_uri=' + callback_url \
+    + '&state=ABCD' \
+    + '&response_type=code'
+print(auth_url)  # try in browser
+To get an access token:
+
+token_url = 'https://secure.join.me/api/public/v1/auth/token'
+headers = {'content-type': 'application/json'}
+token_params = {
+    'client_id': client_id,
+    'client_secret': client_secret,
+    'code': auth_code,
+    'redirect_uri': callback_url,
+    'grant_type': 'authorization_code'
+}
+result = requests.post(token_url, data=json.dumps(token_params), headers=headers)
+access_token = result.json().get('access_token')
+Then your header for the post to /meetings would need to look like:
+
+headers = {
+    'content-type': 'application/json',
+    'Authorization': 'Bearer ' + access_token
+}
+*/
