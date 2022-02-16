@@ -1,0 +1,15 @@
+/*
+using urlib modules inside processRequest() you could add your payload to urlopen like this:
+
+req = Request(yql_url)
+req.add_header('Content-Type', 'application/json; charset=utf-8')
+jsondata = json.dumps(payload)
+jsondataasbytes = jsondata.encode('utf-8')   # needs to be bytes
+result = urlopen(req, jsondataasbytes).read()
+data = json.loads(result)
+Things get more succinct if using the requests module:
+
+headers = {'content-type': 'application/json'}
+result = requests.post(yql_url, data=json.dumps(payload), headers=headers)
+data = result.json()
+*/
